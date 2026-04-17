@@ -1,0 +1,32 @@
+name: Validate Website Before Deploy
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Verify required files exist
+        run: |
+          if [ ! -f index.html ]; then
+            echo "ERROR: index.html not found in repository root"
+            exit 1
+          fi
+
+      - name: Install HTML validator
+        run: |
+          npm install -g htmlhint
+
+      - name: Validate HTML files
+        run: |
+          htmlhint "**/*.html"

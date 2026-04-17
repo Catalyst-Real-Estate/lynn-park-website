@@ -1,0 +1,45 @@
+# ------------------------------
+# Operating system files
+# ------------------------------
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ------------------------------
+# Editor / IDE files
+# ------------------------------
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# ------------------------------
+# Logs
+# ------------------------------
+*.log
+
+# ------------------------------
+# Temporary / backup files
+# ------------------------------
+*.tmp
+*.bak
+*.old
+~*
+
+# ------------------------------
+# Dependency folders (only if used)
+# ------------------------------
+node_modules/
+
+# ------------------------------
+# Build output (only if applicable)
+# ------------------------------
+dist/
+build/
+
+# ------------------------------
+# GitHub Pages / Jekyll (safe defaults)
+# ------------------------------
+_site/
+.jekyll-cache/
+.jekyll-metadata

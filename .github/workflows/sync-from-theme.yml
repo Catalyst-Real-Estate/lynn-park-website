@@ -1,0 +1,35 @@
+name: Sync from property-site-theme
+
+on:
+  schedule:
+    - cron: '0 13 * * *'   # Daily at 13:00 UTC (~09:00 EDT)
+  repository_dispatch:
+    types: [theme-updated]
+  workflow_dispatch: {}
+
+jobs:
+  sync:
+    # Skip on the theme repo itself — theme has nothing to sync from.
+    if: github.repository != 'Catalyst-Real-Estate/property-site-theme'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - name: Checkout property repo
+        uses: actions/checkout@v4
+
+      - name: Open sync PR from theme
+        uses: AndreasAugustin/actions-template-sync@v2
+        with:
+          source_repo_path: Catalyst-Real-Estate/property-site-theme
+          upstream_branch: main
+          pr_branch_name_prefix: chore/theme-sync
+          pr_title: "chore: sync from property-site-theme"
+          pr_body: |
+            Automated PR syncing shared theme files from `property-site-theme`.
+
+            - Validates via this repo's `validate.yml` before merge.
+            - Per-property files (`index.html`, `images/`, `CNAME`, `README.md`) are excluded via `.templatesyncignore`.
+            - Do NOT force-merge if validation fails.
+          github_token: ${{ secrets.THEME_SYNC_TOKEN || secrets.GITHUB_TOKEN }}

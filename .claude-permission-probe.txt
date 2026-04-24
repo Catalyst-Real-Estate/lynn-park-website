@@ -1,1 +1,0 @@
-Throwaway probe file to verify the GitHub App integration has Contents:write on this repo. Safe to delete.

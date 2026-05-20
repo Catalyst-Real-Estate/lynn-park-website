@@ -142,7 +142,19 @@
 
   <div class="filter-bar">
     <button class="filter-btn active" onclick="filterSpaces('all',this)">All Spaces</button>
+    <button class="filter-btn" onclick="filterSpaces('industrial',this)">Industrial / Warehouse</button>
     <button class="filter-btn" onclick="filterSpaces('office',this)">Office</button>
+  </div>
+
+  <!-- INDUSTRIAL / WAREHOUSE SECTION -->
+  <div class="space-type-section" data-type="industrial" id="warehouse-section">
+    <h3 class="space-type-title">Industrial Warehouse</h3>
+    <p class="space-type-desc">Flexible warehouse and flex space with finished offices, grade-level doors, and high clear heights. Ideal for distribution, light manufacturing, and service businesses.</p>
+    <div style="background:#f5f5f3;border:1px solid #e0ddd8;border-radius:10px;padding:36px 32px;text-align:center;max-width:560px;">
+      <p style="font-size:17px;font-weight:600;color:#2d2d2b;margin-bottom:8px;">Industrial &amp; Warehouse — Fully Leased</p>
+      <p style="font-size:15px;color:#5a5a56;margin-bottom:24px;">All warehouse suites are currently occupied. Contact us to be added to the waitlist and we'll reach out as soon as space becomes available.</p>
+      <a href="javascript:void(0)" class="btn-primary" onclick="inquireSpace('Industrial / Warehouse Waitlist','interested in future warehouse availability')" style="display:inline-block;">Join the waitlist &rarr;</a>
+    </div>
   </div>
 
   <!-- OFFICE SECTION -->
@@ -743,7 +755,7 @@ function openChat() {
   } else {
     var attempts = 0;
     var retryInterval = setInterval(function() {
-      attempts++;
+      attempts++; 
       if (window.Intercom) {
         clearInterval(retryInterval);
         Intercom('showNewMessage', 'Hi, I\'d like to learn more about available spaces at Lynn Corporate Park.');

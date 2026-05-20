@@ -142,42 +142,7 @@
 
   <div class="filter-bar">
     <button class="filter-btn active" onclick="filterSpaces('all',this)">All Spaces</button>
-    <button class="filter-btn" onclick="filterSpaces('industrial',this)">Industrial / Warehouse</button>
     <button class="filter-btn" onclick="filterSpaces('office',this)">Office</button>
-  </div>
-
-  <!-- INDUSTRIAL / WAREHOUSE SECTION -->
-  <div class="space-type-section" data-type="industrial" id="warehouse-section">
-    <h3 class="space-type-title">Industrial Warehouse</h3>
-    <p class="space-type-desc">Flexible warehouse and flex space with finished offices, grade-level doors, and high clear heights. Ideal for distribution, light manufacturing, and service businesses.</p>
-    <div class="spaces-grid">
-      <div class="space-card" data-space-type="industrial">
-        <div>
-          <div class="card-tabs">
-            <button class="card-tab active" onclick="switchTab(this,'photo')">Photo</button>
-            <button class="card-tab" onclick="switchTab(this,'plan')">Floor Plan</button>
-          </div>
-          <div class="card-tab-content active" data-tab="photo">
-            <div class="space-card-img" style="border-radius:0">
-              <span class="space-type-badge">Industrial</span>
-              <img src="images/gallerypic-industrial-2.jpg" alt="Building D warehouse interior — Suite D-102">
-            </div>
-          </div>
-          <div class="card-tab-content" data-tab="plan">
-            <div class="floor-plan-svg">
-              <img src="images/floorplan-d102.png" alt="Suite D-102 floor plan — 2,847 SF, office + warehouse, kitchenette, restrooms, 12' garage door" data-title="Suite D-102 &middot; 2,847 SF" data-subtitle="Office + Warehouse &middot; Kitchenette &middot; Restrooms &middot; 12' Garage Door" onclick="openLightbox(this)">
-            </div>
-          </div>
-        </div>
-        <div class="space-card-body">
-          <h3>Suite D-102 &middot; Building D</h3>
-          <div class="space-specs">2,847 SF &middot; Office + Warehouse &middot; 12' garage door, kitchenette, restrooms &middot; 47815 West Road</div>
-          <div class="space-price">$0.83/SF + NNN</div>
-          <span class="space-avail">Available now</span>
-        </div>
-        <a href="javascript:void(0)" class="space-card-cta" onclick="inquireSpace('Suite D-102','2,847 SF Office + Warehouse, Building D')">Inquire about this space &rarr;</a>
-      </div>
-    </div>
   </div>
 
   <!-- OFFICE SECTION -->

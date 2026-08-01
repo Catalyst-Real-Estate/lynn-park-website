@@ -1,0 +1,14 @@
+# Files listed here are NOT synced from property-site-theme into child property repos.
+# These are per-property files that each property owns independently.
+
+index.html
+images/
+images/**
+CNAME
+README.md
+CLAUDE.md
+.templatesyncignore
+property-sites.json
+
+# Dispatch/notify workflow only runs on the theme itself — don't push it into children.
+.github/workflows/notify-property-sites.yml

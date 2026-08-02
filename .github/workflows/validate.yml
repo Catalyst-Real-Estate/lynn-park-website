@@ -11,22 +11,28 @@ on:
 jobs:
   validate:
     runs-on: ubuntu-latest
-
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
 
-      - name: Verify required files exist
+      - name: Verify required files exist (property repos only)
+        if: github.repository != 'Catalyst-Real-Estate/property-site-theme'
         run: |
           if [ ! -f index.html ]; then
             echo "ERROR: index.html not found in repository root"
             exit 1
           fi
 
-      - name: Install HTML validator
+      - name: Count HTML files
+        id: html_check
         run: |
-          npm install -g htmlhint
+          count=$(find . -name "*.html" -not -path "./node_modules/*" | wc -l)
+          echo "count=$count" >> $GITHUB_OUTPUT
+
+      - name: Install HTML validator
+        if: steps.html_check.outputs.count != '0'
+        run: npm install -g htmlhint
 
       - name: Validate HTML files
-        run: |
-          htmlhint "**/*.html"
+        if: steps.html_check.outputs.count != '0'
+        run: htmlhint "**/*.html"

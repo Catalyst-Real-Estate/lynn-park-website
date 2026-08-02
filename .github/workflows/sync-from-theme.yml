@@ -30,6 +30,7 @@ jobs:
             Automated PR syncing shared theme files from `property-site-theme`.
 
             - Validates via this repo's `validate.yml` before merge.
-            - Per-property files (`index.html`, `images/`, `CNAME`, `README.md`) are excluded via `.templatesyncignore`.
+            - Per-property files (`index.html`, `images/`, `CNAME`, `README.md`, `CLAUDE.md`) are excluded via `.templatesyncignore`.
             - Do NOT force-merge if validation fails.
-          github_token: ${{ secrets.THEME_SYNC_TOKEN || secrets.GITHUB_TOKEN }}
+          source_gh_token: ${{ secrets.THEME_SYNC_TOKEN || secrets.GITHUB_TOKEN }}
+          target_gh_token: ${{ secrets.THEME_SYNC_TOKEN || secrets.GITHUB_TOKEN }}

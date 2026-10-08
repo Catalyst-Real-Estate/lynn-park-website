@@ -36,19 +36,15 @@ htmlhint "**/*.html"
 
 CI runs automatically on push/PR to `main`.
 
-### Intercom snippet
+### Chat
 
-The Intercom Finn launcher is embedded in `index.html`. Do not remove or modify the snippet unless explicitly instructed by Ari Blum:
+Chat is Wayline, loaded via `assets/chat.js` from property-site-theme. Include it once, just before `</body>`:
 
-```javascript
-window.intercomSettings = {
-  app_id: "w14tfjsk",
-  property: "lynn-corporate-park",
-  property_url: window.location.href
-};
+```html
+<script src="assets/chat.js"></script>
 ```
 
-The `property: "lynn-corporate-park"` attribute scopes Finn to the Lynn Park audience in Intercom. Do not change this value.
+Do not load `https://embed.wayline.com/v1.js` directly in page HTML. To change the chat vendor or site key, edit `assets/chat.js` in property-site-theme only.
 
 ---
 

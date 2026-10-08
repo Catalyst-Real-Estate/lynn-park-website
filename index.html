@@ -725,46 +725,14 @@ function openGalleryLightbox(item) {
 }
 function closeGalleryLightbox() { closeLightbox(); }
 
-// Open Intercom Finn with suite context
+// Open chat with suite context
 function inquireSpace(suite, details) {
-  var msg = 'Hi, I\'m interested in ' + suite + ' (' + details + '). Can you tell me more about this space?';
-  if (window.Intercom) {
-    Intercom('showNewMessage', msg);
-  } else {
-    // Wait for Intercom to load, retry up to 3 seconds
-    var attempts = 0;
-    var maxAttempts = 15;
-    var retryInterval = setInterval(function() {
-      attempts++;
-      if (window.Intercom) {
-        clearInterval(retryInterval);
-        Intercom('showNewMessage', msg);
-      } else if (attempts >= maxAttempts) {
-        clearInterval(retryInterval);
-        // Final fallback — open chat section with contact info
-        window.location.href = 'tel:+12483481923';
-      }
-    }, 200);
-  }
+  if (window.WaylineEmbed) window.WaylineEmbed.open();
 }
 
-// Open Intercom chat from CTA banner
+// Open chat from CTA banner
 function openChat() {
-  if (window.Intercom) {
-    Intercom('showNewMessage', 'Hi, I\'d like to learn more about available spaces at Lynn Corporate Park.');
-  } else {
-    var attempts = 0;
-    var retryInterval = setInterval(function() {
-      attempts++; 
-      if (window.Intercom) {
-        clearInterval(retryInterval);
-        Intercom('showNewMessage', 'Hi, I\'d like to learn more about available spaces at Lynn Corporate Park.');
-      } else if (attempts >= 15) {
-        clearInterval(retryInterval);
-        window.location.href = 'tel:+12483481923';
-      }
-    }, 200);
-  }
+  if (window.WaylineEmbed) window.WaylineEmbed.open();
 }
 </script>
 
@@ -781,15 +749,7 @@ function openChat() {
   <div class="lightbox-caption" id="lightbox-caption"></div>
 </div>
 
-<!-- Intercom Finn Agent -->
-<script>
-  window.intercomSettings = {
-    app_id: 'w14tfjsk',
-    property: 'lynn-corporate-park',
-    property_url: window.location.href
-  };
-  (function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',w.intercomSettings);}else{var d=document;var i=function(){i.c(arguments);};i.q=[];i.c=function(args){i.q.push(args);};w.Intercom=i;var l=function(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/w14tfjsk';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);};if(document.readyState==='complete'){l();}else if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})();
-</script>
+<script async src="https://embed.wayline.com/v1.js" data-site-key="ce992963-062a-4b40-9640-19711b23f371"></script>
 
 </body>
 </html>
